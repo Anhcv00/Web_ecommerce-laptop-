@@ -14,7 +14,7 @@
 
 
     <groupId>Web_E</groupId>
-    <artifactId>Web_Ecom</artifactId>
+    <artifactId>Web_E</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Web_Ecom</name>
     <description>Web_Ecom</description>
@@ -31,10 +31,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-security</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -87,6 +87,12 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version> <!-- Thay phiên bản tại đây -->
         </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.28</version> <!-- Sử dụng phiên bản mới nhất có sẵn và đã vá lỗi -->
+        </dependency>
+
     </dependencies>
 
     <build>
