@@ -1,7 +1,13 @@
-# Web_Ecom
+# Web_Ecommerce : 
 Project_2023
 Admin: 
- + Đăng ký
- + Đăng nhập
- + 
-
+ + Quản lý danh mục, sản phẩm
+ + Quản lí người dùng
+ + Quản lí đơn hàng ( Update)
+ + Thống kê (Update)
+User:
++ Đăng nhập
++ Đăng ký
++ Thanh toán (...)
++ Đánh giá (...)
++ Tìm kiếm sản phẩm 
