@@ -1,6 +1,7 @@
-# Web_E
+# Web_Ecom
 Project_2023
 Admin: 
-+ Đăng nhập
-+ Đăng ký
-+ Quản lí sản phẩm
+ + Đăng ký
+ + Đăng nhập
+ + 
+
