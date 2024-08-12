@@ -8,9 +8,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -18,7 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "tbl_users")
-public class User extends BaseEntity implements UserDetails{
+public class User extends BaseEntity implements UserDetails {
 	private static final long serialVersionUID = -1956195527415323516L;
 
 	@Column(name = "username", length = 45, nullable = false)
@@ -46,14 +46,18 @@ public class User extends BaseEntity implements UserDetails{
 	private String gender;
 
 	@Column(name = "avatar", length = 100, nullable = false)
-
 	private String avatar;
 
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JoinTable(
+			name = "tbl_users_roles",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id")
+	)
+	private List<Role> roles = new ArrayList<>();
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "tbl_users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private List<Role> roles = new ArrayList<Role>();
-	
+	// Getters and Setters
+
 	public String getUsername() {
 		return username;
 	}
@@ -158,5 +162,4 @@ public class User extends BaseEntity implements UserDetails{
 	public boolean isEnabled() {
 		return true;
 	}
-
 }

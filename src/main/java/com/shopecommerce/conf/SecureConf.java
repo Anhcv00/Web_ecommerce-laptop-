@@ -2,6 +2,7 @@ package com.shopecommerce.conf;
 
 import com.shopecommerce.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -9,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
@@ -51,9 +53,9 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
             .antMatchers("/css/**", "/js/**", "/img/**", "/vendor/**"
             		, "/font-awesome/**", "/summernote/**", "/files/**").permitAll()
             
-            // thực hiện xác thực với các url kiểu ..../admin/....
-//            .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
-//            .antMatchers("/admin/**").authenticated()
+//             thực hiện xác thực với các url kiểu ..../admin/....
+            .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
+            .antMatchers("/admin/**").authenticated()
             
             .and() // kết hợp với điều kiện.
             
@@ -72,7 +74,7 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
             .loginPage("/login") // trang login do mình thiết kế.
             .loginProcessingUrl("/perform_login") // link action for form post.
 				.defaultSuccessUrl("/home", true)
-//            .defaultSuccessUrl("/home", true) // when user success authenticated then go to this url.
+            .defaultSuccessUrl("/home", true) // when user success authenticated then go to this url.
             .failureUrl("/login?login_error=true") // nhập username, password sai thì redirect về trang nào.
             .permitAll();
 	}
@@ -82,7 +84,7 @@ public class SecureConf extends WebSecurityConfigurerAdapter {
 //		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(16);
 //		return encoder;
 //    }
-//
+
 
 	
 }

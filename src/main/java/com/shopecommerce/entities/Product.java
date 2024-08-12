@@ -30,9 +30,10 @@ public class Product extends BaseEntity {
 	private String shortDes;
 
 	@Lob
-	@Column(name = "detail_description", length = 500, nullable = false, columnDefinition = "text")
+	@Column(name = "detail_description", nullable = false)
 	private String shortDetails;
-	
+
+
 	@Transient
 	private String priceVN;
 	
